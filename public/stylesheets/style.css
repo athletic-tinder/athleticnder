@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,20 +6,31 @@ a {
   color: #00B7FF;
 }
 
-.logo {
-  background-image: url('../images/escudo01.png');
-  width: 50px;
-  height: 50px;
-  background-position: center;
+.background-splash{
+  display: flex;
+  background-color: #e7181a;
+  height: 100vh;
+  flex-direction: column;
+  position: relative;
+}
+
+.logo-splash {
+  background-image: url('../images/splash05.png');
+  width: 100%;
+  height: 95%;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.navbar-brand {
-  background-image: url('../images/logo.png');
-  width: 200px;
-  height: 50px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+.button-actions {
+  position: absolute;
+  top: 53%;
+  left: calc(50% - 250px);
+}
+
+.button-actions button {
+  height: 120px;
+  font-size: 30px;
+  width: 500px;
 }
