@@ -4,7 +4,17 @@ const schema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-  }
+  },
+  password:{
+    type: String,
+    unique: true,
+  },
+  image:{ //???
+    trim:true,
+  },
+  token:{
+    type: String
+  },
 }, { timestamps: true });
 
 
