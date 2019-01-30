@@ -1,7 +1,9 @@
 const passport = require ("passport");
 const FbPassport = require ("passport-facebook").Strategy;
 
-const User = required ("../models/user.model.js");
+const User = require ("../models/user.model.js");
+
+
 
 
 //Passport también necesita serializar y deserializar la instancia de usuario de un almacén de sesiones para poder dar soporte a las sesiones de inicio de sesión, de modo que cada solicitud subsiguiente no contenga las credenciales del usuario.
@@ -26,15 +28,15 @@ function authicatedOauthUser(accessToken, refreshToken, profile, next) {
   
   let fbId = '${profile.provider}Id';
   
-  User.findOne ({ [ 'social.${fbId}']: profile.id })
+  User.findOne ({ [ `social.${fbId}`]: profile.id })
     .then (user => {
       if (user){
         next (null, user);
       }else {
         user= new User({
           name: profile.displayName,
-          password: Math.random().toString(23).substring(7),
-          image: profile_pic
+          email: profile.email,
+          image: profile.profile_pic
         })
       }
     })

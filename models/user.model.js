@@ -1,20 +1,39 @@
 const mongoose = require('mongoose');
+const constants = require('constants');
 
 const schema = new mongoose.Schema({
+  social:{
+    facebookId: String
+  },
   name: {
     type: String,
+    required:true,
     trim: true,
   },
-  password:{
+  email: {
     type: String,
-    unique: true,
+    required:true,
+    trim: true,
   },
-  image:{ //???
+  image:{ 
+    type: String, //tiene que ir una URL de la img de FB
+    required:true,
     trim:true,
   },
-  token:{
-    type: String
+  gender:{
+    type: String,
+    required: true,
+    enum: constants.gender //Hombre, mujer, otros
   },
+  lookingFor:{
+    type: String,
+    required: true,
+    enum: constants.gender //Hombre, mujer, otros
+  },
+  categories:{
+    type: [String],
+    enum: constants.categories
+  }
 }, { timestamps: true });
 
 
