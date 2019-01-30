@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -16,6 +18,8 @@ const sessionRouter = require('./routes/session.routes');
 const usersRouter = require('./routes/users.routes');
 
 const app = express();
+
+console.log(process.env.FB_AUTH_CLIENT_ID);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -51,7 +55,7 @@ app.use((req, res, next) => {
  })
 
 app.use('/', sessionRouter);
-app.use('/users', usersRouter);
+app.use('/', usersRouter);
 // app.use('/', (req, res, next) => res.redirect('/users'));
 
 // catch 404 and forward to error handler

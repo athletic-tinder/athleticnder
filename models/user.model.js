@@ -22,12 +22,10 @@ const schema = new mongoose.Schema({
   },
   gender:{
     type: String,
-    required: true,
     enum: constants.gender //Hombre, mujer, otros
   },
   lookingFor:{
     type: String,
-    required: true,
     enum: constants.gender //Hombre, mujer, otros
   },
   categories:{

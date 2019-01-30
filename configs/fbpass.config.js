@@ -20,30 +20,31 @@ passport.deserializeUser((id, next) => {
 passport.use('facebook-auth', new FbPassport({
   clientID: process.env.FB_AUTH_CLIENT_ID || "todo",
   clientSecret: process.env.FB_AUTH_CLIENT_SECRET || "todo",
-  callbackURL: process.env.FB_AUTH_CB || "/sessions/facebook/cb",
-  profileFields: [ 'id', 'name', 'profile_pic']
+  callbackURL: process.env.FB_AUTH_CB || "/facebook/cb",
+  profileFields: [ 'displayName', 'emails', 'picture.type(large)' ]
 },authicatedOauthUser));
 
 function authicatedOauthUser(accessToken, refreshToken, profile, next) {
+  console.log({profile});
   
-  let fbId = '${profile.provider}Id';
+  let fbId = `${profile.provider}Id`;
   
   User.findOne ({ [ `social.${fbId}`]: profile.id })
     .then (user => {
       if (user){
         next (null, user);
-      }else {
-        user= new User({
+      } else {
+        const user= new User({
           name: profile.displayName,
-          email: profile.email,
-          image: profile.profile_pic
+          email: profile.emails[0].value,
+          image: profile.photos[0].value
         })
+        return user.save ()
+          .then (user => {
+            next(null, user);
+          })
       }
     })
-    return user.save ()
-      .then (user => {
-        next(null, user);
-      })
-    
     .catch (error => next (error));  
 };
+
