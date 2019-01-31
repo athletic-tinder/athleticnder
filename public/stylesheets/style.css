@@ -56,6 +56,23 @@ a {
   border-radius: 50%;
 }
 
+.edit-profile .form-check input {
+  display: none;
+}
+
+.edit-profile .form-check img {
+  width: 50px;
+  height: 50px;
+  border: 5px solid transparent;
+  cursor: pointer;
+}
+.edit-profile .form-check input {
+  display: none;
+}
+.edit-profile .form-check input:checked  + img {
+  border-color: blue;
+}
+
 .form-group {
   margin: 30px 0;
 }
