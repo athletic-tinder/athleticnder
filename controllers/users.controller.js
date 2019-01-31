@@ -7,5 +7,5 @@ module.exports.edit = (req, res, next) => {
 }
 
 module.exports.list = (req, res, next) => {
-  res.render('users');
+  res.render('matcheaks');
 }
