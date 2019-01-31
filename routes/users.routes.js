@@ -3,7 +3,6 @@ const router = express.Router();
 const usersController = require ('../controllers/users.controller.js');
 
 
-/* GET users listing. */
 router.get('/profile', usersController.profile);
 router.get('/profile/edit', usersController.edit);
 // router.get('/profile', secure.isAuthenticated, usersController.profile);

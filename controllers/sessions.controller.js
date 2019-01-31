@@ -19,7 +19,7 @@ module.exports.createWithIDPCallback = (req, res, next) => {
         if (error) {
           next(error)
         } else {
-          res.redirect(`/profile`)
+          res.redirect(`/profile/edit`)
         }
       });
     }
