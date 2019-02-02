@@ -6,6 +6,12 @@ a {
   color: #e7181a;
 }
 
+a:hover {
+  color: #e7181a;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .header {
   text-align: center;
   text-transform: uppercase;
@@ -78,9 +84,6 @@ a {
   display: flex;
   justify-content: center;
   padding-top: 60px;
-  max-width: 100%;
-  height: 100vh;
-  background: linear-gradient(to bottom, #ffffff 0%,#edebeb 94%,#e5e5e5 100%);
 }
 
 .matcheaks .card {
