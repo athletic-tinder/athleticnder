@@ -7,18 +7,27 @@ const schema = new mongoose.Schema({
   },
   name: {
     type: String,
-    required:true,
+    required: true,
     trim: true,
   },
   email: {
     type: String,
-    required:true,
+    required: true,
+    unique: true,
     trim: true,
+  },
+  age: {
+    type: Number,
+    required: true,
+    unique: true,
+    trim: true,
+    min: 18,
+    max: 110
   },
   image:{ 
     type: String, //tiene que ir una URL de la img de FB
-    required:true,
-    trim:true,
+    required: true,
+    trim: true,
   },
   gender:{
     type: String,
@@ -31,6 +40,9 @@ const schema = new mongoose.Schema({
   categories:{
     type: [String],
     enum: constants.categories
+  },
+  social: {
+    facebookId: String
   }
 }, { timestamps: true });
 

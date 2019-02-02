@@ -37,7 +37,8 @@ function authicatedOauthUser(accessToken, refreshToken, profile, next) {
         const user= new User({
           name: profile.displayName,
           email: profile.emails[0].value,
-          image: profile.photos[0].value
+          image: profile.photos[0].value,
+          social: { facebookId: profile.id }
         })
         return user.save ()
           .then (user => {
