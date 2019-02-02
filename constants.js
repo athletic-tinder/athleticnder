@@ -1,4 +1,5 @@
 module.exports = {
   categories: ['musica', 'comida', 'motos', 'deporte'],
-  gender: ["Gizona", "Andrea", "Bezteak"]
+  gender: ["Hombre", "Mujer"],
+  lookingFor: ["Hombre", "Mujer", "Todos"]
 }

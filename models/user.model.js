@@ -18,8 +18,6 @@ const schema = new mongoose.Schema({
   },
   age: {
     type: Number,
-    required: true,
-    unique: true,
     trim: true,
     min: 18,
     max: 110
@@ -37,6 +35,10 @@ const schema = new mongoose.Schema({
     type: String,
     enum: constants.gender //Hombre, mujer, otros
   },
+  // filterAge:{
+  //   type: Number,
+
+  // }
   categories:{
     type: [String],
     enum: constants.categories

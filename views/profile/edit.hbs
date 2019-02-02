@@ -6,7 +6,7 @@
     <div class="edit-image align-center">
       <img src="{{session.image}}" alt="">
     </div>
-    <form action="/matcheaks" method="POST">
+    <form action="/profile/edit" method="POST">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
@@ -38,7 +38,8 @@
       <div class="form-group">
         <label for="age">Edad</label>
         <input
-          type="age"
+          type="number"
+          name="age"
           min="18"
           max="100"
           class="form-control"
@@ -56,10 +57,10 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01">Sexo</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect01" required>
+        <select name="gender" class="custom-select" id="inputGroupSelect01" required>
           <option value="" selected disabled>Elige tu sexo</option>
-¡         <option value="1">Mujer</option>
-          <option value="2">Hombre</option>
+¡         <option value="mujer">Mujer</option>
+          <option value="hombre">Hombre</option>
         </select>
       </div>
 
@@ -67,11 +68,11 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect02">Me interesan</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect02" required>
+        <select name="lookingFor" class="custom-select" id="inputGroupSelect02" required>
           <option value="" selected disabled>Elige tu orientación sexual</option>
-          <option value="1">Hombres</option>
-          <option value="2">Mujeres</option>
-          <option value="3">Todos</option>
+          <option value="hombre">Hombres</option>
+          <option value="mujer">Mujeres</option>
+          <option value="todos">Todos</option>
         </select>
       </div>
       
