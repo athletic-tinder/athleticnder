@@ -12,12 +12,37 @@ a:hover {
   font-weight: bold;
 }
 
+.navbar-expand-lg {
+  background-color: #e7181a!important;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.navbar-expand-lg li.nav-item {
+  text-align: right;
+}
+
+.navbar-expand-lg li.nav-item .nav-link {
+  color: white!important;
+}
+
 .header {
   text-align: center;
   text-transform: uppercase;
   background-color: #e7181a;
   color: white;
   padding: 15px 0;
+}
+
+.header-menu {
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #e7181a;
+  color: white;
+  padding-top: 12px;
+  position: absolute;
+  top: 0;
+  left: calc(50% - 80px);
 }
 
 .background-splash{
