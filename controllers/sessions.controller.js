@@ -4,12 +4,6 @@ module.exports.login = (req, res, next) => {
   res.render('splash.hbs');
 }
 
-module.exports.delete = (req, res, next) => {
-  req.logout();
-  res.redirect('/sessions/create');
- }
-
-
 module.exports.createWithIDPCallback = (req, res, next) => {
   passport.authenticate(`${req.params.provider}-auth`, (error, user) => {
     if (error) {
@@ -25,3 +19,8 @@ module.exports.createWithIDPCallback = (req, res, next) => {
     }
   })(req, res, next);
  }
+
+ module.exports.delete = (req, res, next) => {
+  req.logout();
+  res.redirect(`/`);
+}
