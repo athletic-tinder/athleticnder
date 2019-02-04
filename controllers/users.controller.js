@@ -29,11 +29,21 @@ module.exports.doEdit = (req, res, next) => {
 }
 
 module.exports.list = (req, res, next) => {
-  User.find({ gender: req.user.lookingFor })
-   .then (users => {
-     res.render('matcheaks',{ users });
-     console.log(users);
-   })
+  // const { lookingFor } = req.user;
+  const lookingFor = req.user.lookingFor;
+
+  const query  = { ...(lookingFor !== 'todos' ? { gender: lookingFor } : null) }
+
+  User.countDocuments(query)
+    .then(number => {
+        console.log(number);
+        const randomNumber = Math.floor(Math.random() * number)
+        return User.findOne(query, null, {limit: 1, skip: randomNumber})
+         .then(user => {
+           console.log(user);
+           res.render('matcheaks',{ user });
+         })
+      })
    .catch (error => next(error));
 }
 
