@@ -34,7 +34,7 @@ function authicatedOauthUser(accessToken, refreshToken, profile, next) {
       if (user){
         next (null, user);
       } else {
-        const user= new User({
+        const user = new User({
           name: profile.displayName,
           email: profile.emails[0].value,
           image: profile.photos[0].value,

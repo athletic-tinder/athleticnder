@@ -2,7 +2,7 @@
 const createError = require('http-errors');
 
 module.exports.isProfileCompleted = (req, res, next) => {
-  if ([req.user.name, req.user.age, req.user.gender,req.user.lookingFor].includes(null)) {
+  if ([req.user.name, req.user.age, req.user.gender,req.user.lookingFor].includes(undefined)) {
     return res.redirect('/profile/edit');
   } else {
     next();

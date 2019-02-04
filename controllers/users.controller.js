@@ -29,16 +29,18 @@ module.exports.doEdit = (req, res, next) => {
 }
 
 module.exports.list = (req, res, next) => {
-  // const { lookingFor } = req.user;
   const lookingFor = req.user.lookingFor;
+  const userId = req.user.id;
 
-  const query  = { ...(lookingFor !== 'todos' ? { gender: lookingFor } : null) }
+  const query  = { 
+    ...(lookingFor !== 'todos' ? { gender: lookingFor } : null),
+    _id: { $ne: userId }
+  }
 
   User.countDocuments(query)
     .then(number => {
-        console.log(number);
         const randomNumber = Math.floor(Math.random() * number)
-        return User.findOne(query, null, {limit: 1, skip: randomNumber})
+        return User.findOne(query, null, {skip: randomNumber})
          .then(user => {
            console.log(user);
            res.render('matcheaks',{ user });
