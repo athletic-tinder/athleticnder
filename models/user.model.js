@@ -48,6 +48,16 @@ const schema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
+schema.virtual('relationships', {
+  ref: 'Relationship', // The model to use
+  localField: '_id', // Find people where `localField`
+  foreignField: 'users', // is equal to `foreignField`
+  // If `justOne` is true, 'members' will be a single doc as opposed to
+  // an array. `justOne` is false by default.
+  justOne: false,
+  options: { sort: { name: -1 }, limit: 5 } // Query options, see http://bit.ly/mongoose-query-options
+});
+
 
 const User = mongoose.model('User', schema);
 module.exports = User;

@@ -18,17 +18,19 @@
   <h4>Tus matcheaks</h4>
 </div>
 
-{{!-- {{#each users as |user|}} --}}
+{{#each users as |user|}}
 <div class="container matcheaks">
   <div class="card text-center" style="width: 18rem;">
     <img src="{{user.image}}" class="card-img-top" alt="imagen de perfil">
     <div class="card-body">
       <h5 class="card-title mt-2">{{user.name}}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{user.age}} años</h6>
-      <p class="card-text mt-3 mb-4">{{user.gender}}</p>
-      <a href="#" class="card-link">No guztatzen</a>
-      <a href="#" class="card-link">Guztatzen</a>
+      <p class="card-text mt-3 mb-4">{{user.gender}}</p> 
+      <form action="/matcheaks/{{user.id}}" method="post">
+        <button type="submit" name="match" value="next" class="btn btn-danger btn-lg mt-5">No guztatzen</button>
+        <button type="submit" name="match" value="pending" class="btn btn-danger btn-lg mt-5">Guztatzen</button>
+      </form>
     </div>
   </div>
 </div>
-{{!-- {{/each}} --}}
+{{/each}}

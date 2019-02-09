@@ -9,6 +9,7 @@ const session = require('express-session');
 const MongoStore = require("connect-mongo")(session);
 const passport = require('passport');
 const mongoose = require('mongoose');
+//const multer = require('multer');
 
 require('./configs/db.config');
 require('./configs/hbs.config');
@@ -16,10 +17,9 @@ require('./configs/fbpass.config');
 
 const sessionRouter = require('./routes/session.routes');
 const usersRouter = require('./routes/users.routes');
+const loveRouter = require('./routes/love.routes');
 
 const app = express();
-
-console.log(process.env.FB_AUTH_CLIENT_ID);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -56,7 +56,7 @@ app.use((req, res, next) => {
 
 app.use('/', sessionRouter);
 app.use('/', usersRouter);
-// app.use('/', (req, res, next) => res.redirect('/users'));
+app.use('/', loveRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

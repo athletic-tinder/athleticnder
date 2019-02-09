@@ -28,24 +28,52 @@ module.exports.doEdit = (req, res, next) => {
     
 }
 
-module.exports.list = (req, res, next) => {
+
+module.exports.list = (req,res, next) => {
   const lookingFor = req.user.lookingFor;
   const userId = req.user.id;
 
   const query  = { 
-    ...(lookingFor !== 'todos' ? { gender: lookingFor } : null),
-    _id: { $ne: userId }
+    //     // ...(lookingFor !== 'Todos' ? { gender: lookingFor } : null),
+    //     // _id: { $ne: userId },
+    _id: { $ne: userId } 
+}
+  if (lookingFor !== "Todos"){
+    query.gender = lookingFor;
   }
-
-  User.countDocuments(query)
-    .then(number => {
-        const randomNumber = Math.floor(Math.random() * number)
-        return User.findOne(query, null, {skip: randomNumber})
-         .then(user => {
-           console.log(user);
-           res.render('matcheaks',{ user });
-         })
-      })
-   .catch (error => next(error));
+  User.find(query)
+    .then(users => {
+      res.render('matcheaks',{ users });
+    })
+    .catch(error => next(error))
 }
 
+
+
+// module.exports.list = (req, res, next) => {
+//   const lookingFor = req.user.lookingFor;
+//   const userId = req.user.id;
+//  // const unLoved = req.relationship.status //x REVISAR
+
+//  //db.inventory.find( { 'instock.qty': { $lte: 20 } } )
+
+//   const query  = { 
+//     // ...(lookingFor !== 'Todos' ? { gender: lookingFor } : null),
+//     // _id: { $ne: userId },
+//    //'relationships._id': { $ne: userId }
+//     //status: unLoved //REVISAR SI ES ES ASI LA QUERY
+//   }
+
+//   User.countDocuments(query)
+//     .then(number => {
+//         const randomNumber = Math.floor(Math.random() * number)
+//         return User.find(query, null, {skip: randomNumber})
+//         //return User.find(query, null, {skip: randomNumber})
+//           //.populate('relationships')
+//          // .limit(1)
+//           .then(user => {
+//             res.render('matcheaks',{ user });
+//           });
+//       })
+//    .catch (error => next(error));
+// }
