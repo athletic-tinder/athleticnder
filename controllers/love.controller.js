@@ -23,9 +23,13 @@ module.exports.handleMatch = (req, res, next) => {
       }
       
       return relationship.save()
-        .then(() => res.redirect('/matcheaks'))
+        .then(() => res.redirect('/adopta'))
   })
   .catch(error => next(error))
+}
+
+module.exports.list = (req, res, next ) => {
+  res.render('matches/matches');
 }
 
 
