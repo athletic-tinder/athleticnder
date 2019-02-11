@@ -40,3 +40,21 @@ module.exports.list = (req, res, next ) => {
   })
   .catch(error => next(error))
 }
+
+module.exports.list = (req,res, next) => {
+  const owner = req.user.id;
+  const query = {users: owner}
+ 
+  Relationship.find(query)
+  .populate('users')
+  .then(relationships => {
+    const filterList = relationships.map(relationship => {
+      return relationship.users.find(user => user.id !== owner)
+    });
+    res.render('matches/matches', { relationships: filterList })
+  })
+ }
+
+ module.exports.messages = (req,res, next) => {
+  res.render('messages/messages')
+ }
