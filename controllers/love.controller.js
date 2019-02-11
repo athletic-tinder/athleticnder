@@ -29,7 +29,14 @@ module.exports.handleMatch = (req, res, next) => {
 }
 
 module.exports.list = (req,res, next) => {
-  res.render('matches/matches');
+  const owner = req.user.id;
+  const query = {users: owner}
+
+  Relationship.find(query)
+  .then(relationships => {
+    console.log(relationships);
+    res.render('matches/matches', { relationships })
+  }) 
 }
 
 module.exports.messages = (req, res, next ) => {
