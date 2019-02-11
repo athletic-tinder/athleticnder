@@ -4,5 +4,6 @@ const loveController = require ('../controllers/love.controller.js');
 
 router.post('/adopta/:id', loveController.handleMatch);
 router.get('/matches', loveController.list);
+router.get('/messages', loveController.messages);
 
 module.exports = router;
