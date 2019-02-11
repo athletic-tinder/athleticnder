@@ -33,13 +33,13 @@
         <h5 class="card-title mt-2">{{user.name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{user.age}} años</h6>
         <p class="card-text mt-3 mb-4">{{user.gender}}</p> 
-        <form action="/matcheaks/{{user.id}}" method="post">
+        <form class="button-action" action="/matcheaks/{{user.id}}" method="post">
           <button
             type="submit"
             name="status"
             value="block"
-            class="btn btn-danger btn-lg mt-5">
-            Bloquear
+            class="btn btn-danger btn-lg mt-2">
+            <img src="/public/images/rechazar.png" />
           </button>
         </form>
         <form action="/message/{{user.id}}" method="post">
@@ -47,8 +47,8 @@
             type="submit"
             name="status"
             value="write"
-            class="btn btn-danger btn-lg mt-5">
-            Escribir
+            class="btn btn-danger btn-lg mt-2">
+            <img src="/public/images/write-letter.png" />
             </button>
         </form>
       </div>
