@@ -28,24 +28,10 @@ module.exports.handleMatch = (req, res, next) => {
   .catch(error => next(error))
 }
 
-module.exports.messages = (req, res, next ) => {
-  res.render('messages/messages');
-}
-
-module.exports.list = (req, res, next ) => {
-  const query  = { 
-    ...(lookingFor !== 'Todos' ? { gender: lookingFor } : null),
-   _id: { $ne: userId },
- }
-
-  Relationship.findOne(query)
-  .then(relationship => {
-    if(relationship.status === 'matched')
-    res.render('matches',{ matches });
-  })
-  .catch(error => next(error))
-}
-
 module.exports.list = (req,res, next) => {
   res.render('matches/matches');
+}
+
+module.exports.messages = (req, res, next ) => {
+  res.render('messages/messages');
 }
