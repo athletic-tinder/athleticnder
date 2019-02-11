@@ -17,3 +17,11 @@ module.exports.isAuthenticated = (req, res, next) => {
       .redirect('/sessions/create');
   }
 }
+
+module.exports.nonAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.redirect('/adopta');
+  } else {
+    next();
+  }
+}
