@@ -10,7 +10,7 @@ const schema = new mongoose.Schema({
       }
     ],
     default: [],
-    unique: true
+    //unique: true
   },
   status: {
     type: String,

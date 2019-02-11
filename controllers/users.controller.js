@@ -1,4 +1,5 @@
 const User = require('../models/user.model');
+const Relationship = require('../models/relationship.model');
 
 module.exports.profile = (req, res, next) => {
   res.render('profile/index');
@@ -28,19 +29,32 @@ module.exports.doEdit = (req, res, next) => {
     
 }
 
+Relationship.find( { status: 'reject' })
+  .then(relation => {
+    if (relation) {
+      console.log ( "hay relacion");
+    } else {
+      console.log ( "no hay relacion");
+    }
+  })
+  .catch (error => next(error));
+
 
 module.exports.list = (req,res, next) => {
   const lookingFor = req.user.lookingFor;
   const userId = req.user.id;
 
   const query  = { 
-    //     // ...(lookingFor !== 'Todos' ? { gender: lookingFor } : null),
-    //     // _id: { $ne: userId },
-    _id: { $ne: userId } 
-}
-  if (lookingFor !== "Todos"){
-    query.gender = lookingFor;
+     ...(lookingFor !== 'Todos' ? { gender: lookingFor } : null),
+    _id: { $ne: userId }, 
+    //no muestrame las relaciones rejected
+    //muestrame las relaciones en las que no soy owner
   }
+      // if (lookingFor !== "Todos"){
+      //   query.gender = lookingFor;
+      // }
+
+
   User.find(query)
     .then(users => {
       res.render('matcheaks',{ users });
