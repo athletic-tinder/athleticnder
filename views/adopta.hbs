@@ -32,10 +32,10 @@
       <h5 class="card-title mt-2">{{user.name}}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{user.age}} años</h6>
       <p class="card-text mt-3 mb-4">{{user.gender}}</p> 
-      <form action="/matcheaks/{{user.id}}" method="post">
+      <form action="/adopta/{{user.id}}" method="post">
         <button type="submit" name="status" value="dislike" class="btn btn-danger btn-lg mt-5">No guztatzen</button>
       </form>
-      <form action="/matcheaks/{{user.id}}" method="post">
+      <form action="/adopta/{{user.id}}" method="post">
         <button type="submit" name="status" value="like" class="btn btn-danger btn-lg mt-5">Guztatzen</button>
       </form>
     </div>

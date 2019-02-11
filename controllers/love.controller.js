@@ -33,9 +33,13 @@ module.exports.list = (req,res, next) => {
   const query = {users: owner}
 
   Relationship.find(query)
+  .populate('users')
   .then(relationships => {
-    console.log(relationships);
-    res.render('matches/matches', { relationships })
+    const filterList = relationships.map(relationship => {
+      return relationship.users.find(user => user.id !== owner)
+    });
+    console.log(filterList[0]);
+    res.render('matches/matches', { relationships: filterList })
   }) 
 }
 
