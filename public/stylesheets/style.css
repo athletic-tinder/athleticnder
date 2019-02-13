@@ -129,7 +129,6 @@ a:hover {
   float: left;
 }
 
-<<<<<<< HEAD
 .matcheaks form button {
   background-color: transparent;
 }
@@ -137,11 +136,6 @@ a:hover {
 .matcheaks form img {
   width: 40px;
   height: 40px;
-=======
-.matcheaks img {
-  width: 50px;
-  height: 50px;
->>>>>>> 6047343a95d69f1fecd3dd100dbbd54d29a3ae1f
 }
 
 .form-group {
