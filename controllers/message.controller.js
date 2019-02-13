@@ -7,7 +7,6 @@ module.exports.getRoom = (req, res, next ) => {
   .populate('from')
   .populate('to')
   .then(messages => {
-    console.log({ messages })
     res.render('messages/messages', { messages, interestedId: req.params.id });
   })
   .catch(error => next(error))
