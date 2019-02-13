@@ -129,6 +129,15 @@ a:hover {
   float: left;
 }
 
+.matcheaks form button {
+  background-color: transparent;
+}
+
+.matcheaks form img {
+  width: 40px;
+  height: 40px;
+}
+
 .form-group {
   margin: 30px 0;
 }
