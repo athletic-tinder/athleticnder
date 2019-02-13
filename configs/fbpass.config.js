@@ -24,9 +24,7 @@ passport.use('facebook-auth', new FbPassport({
   profileFields: [ 'displayName', 'emails', 'picture.type(large)' ]
 },authicatedOauthUser));
 
-function authicatedOauthUser(accessToken, refreshToken, profile, next) {
-  console.log({profile});
-  
+function authicatedOauthUser(accessToken, refreshToken, profile, next) {  
   let fbId = `${profile.provider}Id`;
   
   User.findOne ({ [ `social.${fbId}`]: profile.id })

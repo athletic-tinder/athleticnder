@@ -61,11 +61,6 @@ module.exports.list = (req,res, next) => {
     const filterList = relationships.map(relationship => {
       return relationship.users.find(user => user.id !== owner)
     });
-    console.log(filterList[0]);
     res.render('matches/matches', { relationships: filterList })
   }) 
-}
-
-module.exports.messages = (req, res, next ) => {
-  res.render('messages/messages');
 }

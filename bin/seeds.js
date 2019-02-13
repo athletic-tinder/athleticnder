@@ -90,8 +90,6 @@ User.create(users)
     console.error("Seeds error:", users);
     mongoose.connection.close();
   });
-//   console.log("OK");
 
 // latch.unpair("LVTkndDMW3zWMzg9gPHJeptmHZhpEnEw9igzngQFCKMFQfLtfBQtnsmmJHpMkXad", function() {
-//   console.log("OK");
 // });
