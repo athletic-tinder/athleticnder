@@ -3,16 +3,31 @@
 </div>
 
 <div class="container mt-5">
-  {{!-- {{#each messages as |user|}} --}}
+  {{#each messages as |message|}}
   <div class="card">
     <div class="card-header">
-      From: {{user.name}}
+      From: {{message.from.name}}
     </div>
     <div class="card-body">
-      <h5 class="card-title">Mensaje</h5>
-      <p class="card-text">Texto del mensaje</p>
-      <a href="#" class="btn btn-success">Responder</a>
+      <h5 class="card-title">{{message.from.name}}</h5>
+      <p class="card-text">{{message.text}}</p>
     </div>
   </div>
-  {{!-- {{/each}} --}}
+  {{/each}}
+  <div class="message-box">
+    <form action="/messages/{{interestedId}}" method="POST">
+      <div class="form-group">
+        <textarea
+          class="form-control"
+          name="text"
+          rows="3"
+          placeholder="Escribe tu mensaje"></textarea>
+      </div>
+       <button
+          type="submit"
+          class="btn btn-lg mt-2">
+          Enviar
+        </button>
+    </form>
+  </div>
 </div>
