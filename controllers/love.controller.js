@@ -1,4 +1,27 @@
 const Relationship = require('../models/relationship.model');
+const User = require('../models/user.model');
+
+
+module.exports.adopta = (req,res, next) => {
+  const lookingFor = req.user.lookingFor;
+  const userId = req.user.id;
+
+  const query  = { 
+     ...(lookingFor !== 'Todos' ? { gender: lookingFor } : null),
+    _id: { $ne: userId }, 
+    //no muestrame las relaciones rejected
+    //muestrame las relaciones en las que no soy owner
+  }
+      // if (lookingFor !== "Todos"){
+      //   query.gender = lookingFor;
+      // }
+
+  User.find(query)
+    .then(users => {
+      res.render('love/adopta',{ users });
+    })
+    .catch(error => next(error))
+}
 
 module.exports.handleMatch = (req, res, next) => {
   const status = req.body.status;

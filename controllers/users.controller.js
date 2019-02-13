@@ -6,7 +6,7 @@ module.exports.profile = (req, res, next) => {
 }
 
 module.exports.list = (req, res, next) => {
-  res.render('profile/matches');
+  res.render('matches/matches');
 }
 
 module.exports.edit = (req, res, next) => {
@@ -40,26 +40,3 @@ Relationship.find( { status: 'reject' })
     }
   })
   .catch (error => next(error));
-
-
-module.exports.list = (req,res, next) => {
-  const lookingFor = req.user.lookingFor;
-  const userId = req.user.id;
-
-  const query  = { 
-     ...(lookingFor !== 'Todos' ? { gender: lookingFor } : null),
-    _id: { $ne: userId }, 
-    //no muestrame las relaciones rejected
-    //muestrame las relaciones en las que no soy owner
-  }
-      // if (lookingFor !== "Todos"){
-      //   query.gender = lookingFor;
-      // }
-
-
-  User.find(query)
-    .then(users => {
-      res.render('adopta',{ users });
-    })
-    .catch(error => next(error))
-}
