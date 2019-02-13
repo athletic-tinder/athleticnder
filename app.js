@@ -18,6 +18,7 @@ require('./configs/fbpass.config');
 const sessionRouter = require('./routes/session.routes');
 const usersRouter = require('./routes/users.routes');
 const loveRouter = require('./routes/love.routes');
+const messageRouter = require('./routes/message.routes');
 
 const app = express();
 
@@ -57,6 +58,7 @@ app.use((req, res, next) => {
 app.use('/', sessionRouter);
 app.use('/', usersRouter);
 app.use('/', loveRouter);
+app.use('/messages', messageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

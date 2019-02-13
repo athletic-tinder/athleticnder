@@ -1,6 +1,7 @@
-const Relationship = require('../models/relationship.model');
-const User = require('../models/user.model');
+const Message = require('../models/message.model');
 
-module.exports.messages = (req, res, next ) => {
-  res.render('messages/messages');
-}
+module.exports.getRoom = (req, res, next ) => {
+  Message.find({
+    $or: [{form: req.user.id, to:req.params.id},{form:req.params.id, to:req.user.id}]
+  })
+};
