@@ -33,10 +33,3 @@ module.exports.doEdit = (req, res, next) => {
     
 }
 
-Relationship.find( { status: 'reject' })
-  .then(relation => {
-    if (relation) {
-    } else {
-    }
-  })
-  .catch (error => next(error));
