@@ -1,15 +1,18 @@
 const Message = require('../models/message.model');
+const User = require('../models/user.model');
 
 module.exports.getRoom = (req, res, next ) => {
-  Message.find({
+  const messagePromise = Message.find({
     $or: [{from: req.user.id, to:req.params.id},{from:req.params.id, to:req.user.id}]
-  })
-  .populate('from')
-  .populate('to')
-  .then(messages => {
-    res.render('messages/messages', { messages, interestedId: req.params.id });
-  })
-  .catch(error => next(error))
+  });
+
+  const userPromise = User.findById(req.params.id);
+
+  Promise.all([messagePromise, userPromise])
+    .then(([ messages, otherUser ]) => {
+      res.render('messages/messages', { messages, interestedId: req.params.id, otherUser }) 
+    })
+    .catch(error => next(error))
 }
 
 module.exports.sendMessage = (req, res, next) => {

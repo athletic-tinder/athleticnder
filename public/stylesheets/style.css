@@ -167,6 +167,10 @@ a:hover {
   padding: 10px;
 }
 
+.messages img {
+  border-radius: 50%;
+}
+
 .messages .justify-content-start .col-6 .card-text {
   background-color: #f3f3f3;
   margin: 10px 0;

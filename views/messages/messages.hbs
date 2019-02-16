@@ -4,13 +4,13 @@
 
 <div class="container mt-5 messages">
   <div class="row">
-    <div class="col">
-      <p>Mensajes con {{message.to.name}}</p>
-      <h5 class="card-title">{{message.to.name}}</h5>
+    <div class="col d-flex flex-column align-items-center">
+      <p>{{otherUser.name}}</p>
+      <img src="{{otherUser.image}}">
     </div>
   </div>
   {{#each messages as |message|}}
-  <div class="row {{#whoSend ../session.id message.from._id}}{{/whoSend}}">
+  <div class="row {{#whoSend ../session.id message.from}}{{/whoSend}}">
     <div class="col-6">
       <p class="card-text">{{message.text}}</p>
     </div>
