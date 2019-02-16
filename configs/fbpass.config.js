@@ -38,7 +38,7 @@ function authicatedOauthUser(accessToken, refreshToken, profile, next) {
           image: profile.photos[0].value,
           social: { facebookId: profile.id }
         })
-        return user.save ()
+        return user.save()
           .then (user => {
             next(null, user);
           })

@@ -14,13 +14,14 @@ module.exports.edit = (req, res, next) => {
 }
 
 module.exports.doEdit = (req, res, next) => {
+  console.log(req.body);
   const updates = {
     name: req.body.name, 
     age: req.body.age,
     gender: req.body.gender,
     lookingFor: req.body.lookingFor
   } 
-
+  console.log(updates)
   User.findByIdAndUpdate(req.user._id, {$set: updates}, {new: true})
     .then(user => {
         if (user) {
@@ -30,6 +31,5 @@ module.exports.doEdit = (req, res, next) => {
         }
     })
     .catch (error => next(error));
-    
 }
 

@@ -15,7 +15,7 @@ module.exports.adopta = (req,res, next) => {
     .populate('relationships', null, {users: { $in: [userId] } })
     .then(users => {
       users = users.filter(user => {
-        return user.relationships.length === 0 || user.relationships[0].status === 'pending';
+        return user.relationships.length === 0 || (user.relationships[0].status === 'pending' && user.relationships[0].users[0] != userId);
       });
       users = [ users[0] ] || [];
       res.render('love/adopta',{ users });

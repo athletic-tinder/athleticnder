@@ -7,45 +7,21 @@
     <div class="edit-image align-center">
       <img src="{{session.image}}" alt="">
     </div>
-    <form action="/profile/edit" method="POST" enctype="multipart/form-data">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-        </div>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-        </div>
-      </div>
-
+    <form action="/profile/edit" method="POST">
       <div class="form-group">
         <label for="name">Nombre</label>
-        <input
-          type="text"
-          class="form-control
-          {{#if errors.name }}is-invalid{{/if}}"
-          name="name"
-          placeholder="Nombre"
-          value="{{ session.name }}"
-          minlength="5"
-          required/>
+        <input type="text" class="form-control {{#if errors.name }}is-invalid{{/if}}" name="name" placeholder="Nombre"
+          value="{{ session.name }}" minlength="5" required />
         {{#if errors.name }}
-          <div class="invalid-feedback">
-            {{ errors.name }}
-          </div>
+        <div class="invalid-feedback">
+          {{ errors.name }}
+        </div>
         {{/if}}
       </div>
 
       <div class="form-group">
         <label for="age">Edad</label>
-        <input
-          type="number"
-          name="age"
-          min="18"
-          max="100"
-          class="form-control"
-          id="age"
-          placeholder="Escribe tu edad"
+        <input type="number" name="age" min="18" max="100" class="form-control" id="age" placeholder="Escribe tu edad"
           required>
       </div>
 
@@ -55,7 +31,7 @@
         </div>
         <select name="gender" class="custom-select" id="inputGroupSelect01" required>
           <option value="" selected disabled>Elige tu sexo</option>
-¡         <option value="mujer">Mujer</option>
+          <option value="mujer">Mujer</option>
           <option value="hombre">Hombre</option>
         </select>
       </div>
@@ -71,7 +47,7 @@
           <option value="todos">Todos</option>
         </select>
       </div>
-      
+
       <div class="row align-center">
         <div class="col">
           <button type="submit" class="btn btn-danger btn-lg mt-2">OK</button>
