@@ -160,6 +160,20 @@ a:hover {
   border-color: #e7181a;
 }
 
+.messages .justify-content-end .col-6 .card-text {
+  background-color: #c4f4e6;
+  margin: 10px 0;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.messages .justify-content-start .col-6 .card-text {
+  background-color: #f3f3f3;
+  margin: 10px 0;
+  border-radius: 4px;
+  padding: 10px;
+}
+
 .form-messages {
   margin: 30px 0 10px 0;
 }
