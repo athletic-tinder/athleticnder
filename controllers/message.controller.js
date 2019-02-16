@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Message = require('../models/message.model');
 const User = require('../models/user.model');
 
@@ -26,5 +27,14 @@ module.exports.sendMessage = (req, res, next) => {
   })
   message.save()
   .then(() => res.redirect(`/messages/${req.params.id}`))
-  .catch(error => next(error))
+  .catch(error => {
+    if (error instanceof mongoose.Error.ValidationError) {
+        res.render(`messages/messages`, {
+          message: req.body,
+          errors: error.errors
+      });
+    } else {
+        next(error);
+    }
+});
 }

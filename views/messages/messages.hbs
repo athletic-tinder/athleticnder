@@ -27,13 +27,17 @@
           class="form-control"
           name="text"
           rows="3"
-          placeholder="Escribe tu mensaje"></textarea>
+          placeholder="Escribe tu mensaje"
+          required></textarea>
       </div>
        <button
           type="submit"
           class="btn btn-lg mt-2 button-messages">
           Enviar
         </button>
+        <div class="">
+          {{ errors.text }}
+        </div>
     </form>
   </div>
 </div>
