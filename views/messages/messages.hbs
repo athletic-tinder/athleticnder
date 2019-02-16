@@ -4,7 +4,7 @@
 
 <div class="container mt-1 messages">
   <div class="row">
-    <div class="col d-flex flex-column align-items-center">
+    <div class="col d-flex flex-column align-items-center mt-2">
       <p>{{otherUser.name}}</p>
       <img src="{{otherUser.image}}">
     </div>
@@ -14,10 +14,6 @@
     <div class="col-6">
       <p class="card-text">{{message.text}}</p>
     </div>
-    {{!-- <div class="col-6">
-      <h5 class="card-title">{{message.to.name}}</h5>
-      <p class="card-text">{{message.text}}</p>
-    </div> --}}
   </div>
   {{/each}}
   <div class="message-box">
