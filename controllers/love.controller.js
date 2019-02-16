@@ -52,7 +52,10 @@ module.exports.handleMatch = (req, res, next) => {
 
 module.exports.list = (req,res, next) => {
   const owner = req.user.id;
-  const query = {users: owner}
+  const query = {
+    ...{status: 'matched'}, 
+   users: { $in: [req.user.id]}
+  }
 
   Relationship.find(query)
   .populate('users')

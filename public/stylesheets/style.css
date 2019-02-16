@@ -112,7 +112,7 @@ a:hover {
 .matcheaks {
   display: flex;
   justify-content: center;
-  padding-top: 60px;
+  padding: 40px 0;
 }
 
 .matcheaks .card {
