@@ -4,15 +4,15 @@
 
 <div class="container mt-5">
   {{#each messages as |message|}}
-  <div class="row">
+  <div class="row {{#whoSend ../session.id message.from._id}}{{/whoSend}}">
     <div class="col-6">
       <h5 class="card-title">{{message.from.name}}</h5>
       <p class="card-text">{{message.text}}</p>
     </div>
-    <div class="col-6">
+    {{!-- <div class="col-6">
       <h5 class="card-title">{{message.to.name}}</h5>
       <p class="card-text">{{message.text}}</p>
-    </div>
+    </div> --}}
   </div>
   {{/each}}
   <div class="message-box">
