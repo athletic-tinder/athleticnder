@@ -46,7 +46,7 @@ const schema = new mongoose.Schema({
   social: {
     facebookId: String
   }
-}, { timestamps: true });
+}, { timestamps: true, toObject: {virtuals:true} });
 
 schema.virtual('relationships', {
   ref: 'Relationship', // The model to use

@@ -7,17 +7,19 @@ module.exports.adopta = (req,res, next) => {
   const userId = req.user.id;
 
   const query  = { 
-     ...(lookingFor !== 'Todos' ? { gender: lookingFor } : null),
+     ...(lookingFor !== 'todos' ? { gender: lookingFor } : null),
     _id: { $ne: userId }, 
     //no muestrame las relaciones rejected
     //muestrame las relaciones en las que no soy owner
   }
-      // if (lookingFor !== "Todos"){
-      //   query.gender = lookingFor;
-      // }
 
   User.find(query)
+    .populate('relationships', null, {users: { $in: [userId] } })
     .then(users => {
+      users = users.filter(user => {
+        return user.relationships.length === 0 || user.relationships[0].status === 'pending';
+      });
+      users = [ users[0] ] || [];
       res.render('love/adopta',{ users });
     })
     .catch(error => next(error))
