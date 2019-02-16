@@ -44,7 +44,6 @@ module.exports.handleMatch = (req, res, next) => {
           relationship.status === 'pending') {
         relationship.status = 'matched';
       }
-      
       return relationship.save()
         .then(() => res.redirect('/adopta'))
   })
