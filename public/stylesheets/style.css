@@ -165,6 +165,7 @@ a:hover {
   margin: 10px 0;
   border-radius: 4px;
   padding: 10px;
+  box-shadow: 0 1px 2px 0 rgba(155,155,155,0.77);
 }
 
 .messages img {
@@ -178,6 +179,7 @@ a:hover {
   margin: 10px 0;
   border-radius: 4px;
   padding: 10px;
+  box-shadow: 0 1px 2px 0 rgba(155,155,155,0.77);
 }
 
 .form-messages {
@@ -186,4 +188,5 @@ a:hover {
 
 .button-messages {
   float: right;
+  background-color: gainsboro;
 }
