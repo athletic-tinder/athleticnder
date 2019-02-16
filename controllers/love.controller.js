@@ -9,8 +9,6 @@ module.exports.adopta = (req,res, next) => {
   const query  = { 
      ...(lookingFor !== 'todos' ? { gender: lookingFor } : null),
     _id: { $ne: userId }, 
-    //no muestrame las relaciones rejected
-    //muestrame las relaciones en las que no soy owner
   }
 
   User.find(query)

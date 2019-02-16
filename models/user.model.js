@@ -35,14 +35,6 @@ const schema = new mongoose.Schema({
     type: String,
     enum: constants.gender //Hombre, mujer, otros
   },
-  // filterAge:{
-  //   type: Number,
-
-  // }
-  categories:{
-    type: [String],
-    enum: constants.categories
-  },
   social: {
     facebookId: String
   }
