@@ -3,15 +3,13 @@
 </div>
 
 <div class="container mt-5 messages">
-  {{#each messages as |message|}}
   <div class="row">
-    <div class="col-6 justify-content-start">
+    <div class="col">
+      <p>Mensajes con {{message.to.name}}</p>
       <h5 class="card-title">{{message.to.name}}</h5>
     </div>
-    <div class="col-6 justify-content-end">
-      <h5 class="card-title">{{message.from.name}}</h5>
-    </div>
   </div>
+  {{#each messages as |message|}}
   <div class="row {{#whoSend ../session.id message.from._id}}{{/whoSend}}">
     <div class="col-6">
       <p class="card-text">{{message.text}}</p>
