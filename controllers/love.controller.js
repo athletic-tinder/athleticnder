@@ -17,7 +17,9 @@ module.exports.adopta = (req,res, next) => {
       // }
 
   User.find(query)
+    .populate('relationships')
     .then(users => {
+      console.log(users);
       res.render('love/adopta',{ users });
     })
     .catch(error => next(error))
