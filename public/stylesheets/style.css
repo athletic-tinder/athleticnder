@@ -169,6 +169,8 @@ a:hover {
 
 .messages img {
   border-radius: 50%;
+  width: 80px;
+  height: 80px;
 }
 
 .messages .justify-content-start .col-6 .card-text {

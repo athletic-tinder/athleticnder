@@ -11,7 +11,8 @@ const schema = new mongoose.Schema({
   },
   text:{
     type: String,
-    maxlength: 2000
+    maxlength: 2000,
+    required: true
   }
 }, { timestamps: true });
 
