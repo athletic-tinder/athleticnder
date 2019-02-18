@@ -16,8 +16,19 @@ module.exports.adopta = (req,res, next) => {
     .then(users => {
       users = users.filter(user => {
         return user.relationships.length === 0 || (user.relationships[0].status === 'pending' && user.relationships[0].users[0] != userId);
+        
       });
-      users = [ users[0] ] || [];
+      console.log (users)
+      // users = [ users[0] ] || [];
+      // console.log (users)
+      // if (!users[0]){
+      //   console.log ('Nopi')
+      //   res.render('love/alone');
+      // }
+      if(!users.length) {
+        res.render('love/alone');
+      }
+       
       res.render('love/adopta',{ users });
     })
     .catch(error => next(error))

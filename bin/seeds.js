@@ -79,7 +79,40 @@ const users = [
     "age" : 34,
     "gender" : "hombre",
     "lookingFor" : "todos"
-  }
+  },
+  {
+    "name" : "Luis",
+    "email" : "luis@tfbnw.net",
+    "image" : "https://www.fundacionuniversia.net/wp-content/uploads/2017/09/ironhack_logo.jpg",
+    "social" : {
+      "facebookId" : "105790010535450"
+    },
+    "age" : 34,
+    "gender" : "hombre",
+    "lookingFor" : "todos"
+  },
+  {
+    "name" : "Laura",
+    "email" : "laura@tfbnw.net",
+    "image" : "https://www.fundacionuniversia.net/wp-content/uploads/2017/09/ironhack_logo.jpg",
+    "social" : {
+      "facebookId" : "105790010535451"
+    },
+    "age" : 25,
+    "gender" : "mujer",
+    "lookingFor" : "todos"
+  },
+  {
+    "name" : "Sara",
+    "email" : "sara@tfbnw.net",
+    "image" : "https://www.fundacionuniversia.net/wp-content/uploads/2017/09/ironhack_logo.jpg",
+    "social" : {
+      "facebookId" : "105790010535452"
+    },
+    "age" : 34,
+    "gender" : "hombre",
+    "lookingFor" : "todos"
+  },
 ];
 User.create(users)
   .then(() => {
